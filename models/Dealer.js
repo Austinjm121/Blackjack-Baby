@@ -1,19 +1,19 @@
-const { Model, DataTypes } = require('sequalize');
+const { Model, DataType } = require('sequalize');
 const sequalize = require('../controllers/api/index');
 
-class Player extends Model {}
+class Dealer extends Model {}
 
-Player.init(
+Dealer.init(
     {
-        id: {
-            type: DataTypes.INTEGER,
+        id:{
+            type: DataType,INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
         },
-        username: {
-                type: DataTypes, STRING,
-                allowNull: false,
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false,
         },
         cash: {
             type: DataType,INTEGER,
@@ -26,12 +26,10 @@ Player.init(
     },
     {
         sequelize,
-        timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'Player',
-    }
+        modelName: 'gallery',
+      }
 );
 
-module.exports = Player;
-
+module.exports = Dealer;
