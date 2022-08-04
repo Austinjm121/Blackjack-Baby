@@ -63,7 +63,7 @@ Add additional notes about how to deploy this on a live system
 * **Martin Mendoza** - [GitHub](https://github.com/mmdoza002)
 * **Mitchell Merka** - [GitHub](https://github.com/levmerka)
 
-##Development
+## Development
 
 As with any game, we started with just our ideas. Our Flowcharts and initial visions are below:
 
@@ -72,9 +72,14 @@ Whole game flow:
   <img src="placeholder" alt="Blackjack Flow Chart"/>
 </p>
 
-The battlefield and UI:
+The in-game UI:
 <p align="center">
   <img src="placeholder" alt="Blackjack UI Sketch"/>
+</p>
+
+Leaderboard UIL
+<p align="center">
+  <img src="placeholder" alt="Blackjack Leaderboard Sketch"/>
 </p>
 
 ## License
