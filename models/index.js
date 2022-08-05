@@ -23,5 +23,16 @@ Dealer.belongTo(Player,{
     onDelete: 'CASCADE',
 });
 
+Player.hasMany(Card,{
+    foreignKey: 'card_id',
+    onDelete:'CASCADE',
+});
+
+Dealer.hasMany(Card,{
+    foreignKey: 'card_id',
+    onDelete: 'CASCADE',
+})
+
+
 
 module.exports = {Player, Dealer, Card };

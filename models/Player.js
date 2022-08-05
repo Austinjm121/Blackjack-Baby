@@ -15,22 +15,32 @@ Player.init(
                 type: DataTypes, STRING,
                 allowNull: false,
         },
-        cash: {
-            type: DataType,INTEGER,
+        passowrd:{
+            type: DataTypes.STRING,
             allowNull: false,
+            unique:true,
+            validate:{
+                isUsername: true,
+            },
         },
-        winnings: {
+        cash: {
             type: DataType,INTEGER,
             allowNull: false,
         },
     },
     {
+        hooks: {
+            async beforeCreate(newUserData) {
+              newUserData.password = await bcrypt.hash(newUserData.password, 10);
+              return newUserData;
+            },
+          },
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
         modelName: 'Player',
-    },
+    }
 );
 
 module.exports = Player;
