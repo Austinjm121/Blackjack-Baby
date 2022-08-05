@@ -1,0 +1,25 @@
+{
+  "name": "group-7-project-2",
+  "version": "1.0.0",
+  "description": "Blackjack is a classic game dating back hundreds of years, and with a lot of time, we have recreated it with multiple player support! [Play the official game here!](https://placeholder)",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Austinjm121/Group-7-Project-2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Austinjm121/Group-7-Project-2/issues"
+  },
+  "homepage": "https://github.com/Austinjm121/Group-7-Project-2#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "express-handlebars": "^6.0.6",
+    "handlebars": "^4.7.7"
+  }
+}
