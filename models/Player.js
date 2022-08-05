@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require('sequalize');
-const sequalize = require('../controllers/api/index');
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../controllers/api/index');
 
 class Player extends Model {}
 
@@ -30,7 +30,7 @@ Player.init(
         freezeTableName: true,
         underscored: true,
         modelName: 'Player',
-    }
+    },
 );
 
 module.exports = Player;

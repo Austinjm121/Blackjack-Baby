@@ -1,5 +1,5 @@
-const { Model, DataType } = require('sequalize');
-const sequalize = require('../controllers/api/index');
+const { Model, DataType } = require('sequelize');
+const sequelize = require('../controllers/api/index');
 
 class Dealer extends Model {}
 
@@ -28,7 +28,7 @@ Dealer.init(
         sequelize,
         freezeTableName: true,
         underscored: true,
-        modelName: 'gallery',
+        modelName: 'dealer',
       }
 );
 
