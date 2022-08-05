@@ -18,12 +18,8 @@ Dealer.init(
         cash: {
             type: DataType,INTEGER,
             allowNull: false,
-        },
-        winnings: {
-            type: DataType,INTEGER,
-            allowNull: false,
-        },
     },
+},
     {
         sequelize,
         freezeTableName: true,
