@@ -1,7 +1,12 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../controllers/api/index');
+const bcrypt = require('bcrypt');
+const sequelize = require('../config/connection');
 
-class Player extends Model {}
+class Player extends Model {
+  checkPassword(loginPw) {
+    return bcrypt.compareSync(loginPw, this.password);
+  }
+}
 
 Player.init(
     {
@@ -12,7 +17,7 @@ Player.init(
             autoIncrement: true,
         },
         username: {
-                type: DataTypes, STRING,
+                type: DataTypes.STRING,
                 allowNull: false,
         },
         passowrd:{
@@ -24,7 +29,7 @@ Player.init(
             },
         },
         cash: {
-            type: DataType,INTEGER,
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
     },
