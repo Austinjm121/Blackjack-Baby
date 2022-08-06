@@ -1,12 +1,12 @@
-const { Model, DataType } = require('sequelize');
-const sequelize = require('../controllers/api/index');
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection');
 
 class Dealer extends Model {}
 
 Dealer.init(
     {
         id:{
-            type: DataType,INTEGER,
+            type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
@@ -16,7 +16,7 @@ Dealer.init(
             allowNull: false,
         },
         cash: {
-            type: DataType,INTEGER,
+            type: DataTypes.INTEGER,
             allowNull: false,
     },
 },

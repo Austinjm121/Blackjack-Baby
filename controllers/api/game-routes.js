@@ -7,3 +7,5 @@ const {Player} = require('../../models');
 
 
 // }
+
+module.exports = router

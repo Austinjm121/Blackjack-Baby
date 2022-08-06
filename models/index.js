@@ -8,7 +8,7 @@ Player.hasOne(Card,{
     onDelete: 'CASCADE',
 });
 
-Card.belongTo(Player,{
+Card.belongsTo(Player,{
     foreignKey: 'card_id',
     onDelete: 'CASCADE',
 });
@@ -18,7 +18,7 @@ Dealer.hasOne(Card,{
     onDelete: 'CASCADE',
 });
 
-Dealer.belongTo(Player,{
+Dealer.belongsTo(Player,{
     foreignKey: 'card_id',
     onDelete: 'CASCADE',
 });
