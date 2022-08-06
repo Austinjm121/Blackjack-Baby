@@ -1,13 +1,12 @@
 <div>
-    <h2 id="dealer" class="player">Dealer</h2>
+    <h2>Dealer<span id="dealer-sum"></span></h2>
 
-		<div class="dealerHand">
-			<img id="dealerCard0" src="">
+		<div id="dealer-cards">
+			<img id="hidden" 
+			src="../public/cards/BACK.png"
+			
 		</div>
 
-		<div class="userHand">
-			<img id="userCard0" src="">
-		</div>
 
 		<h2 id="userName" class="player">{{username}}</h2>
 
@@ -17,4 +16,6 @@
       		<button id="playAgain">Play Again?</button>
 			<button id="leaderboard" href="/api/leaderboard">Leaderboard</button>
 		</div>
+		 <p id="results"></p>
+		
 </div>
