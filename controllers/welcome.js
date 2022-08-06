@@ -5,7 +5,7 @@ const withAuth = require('../utils/auth');
 
 // Render welcomepage
 router.get('/', async (req, res) => {
-    res.render('main');
+    res.render('welcome', {layout: 'start-end.handlebars'});
 });
 
 module.exports = router;
