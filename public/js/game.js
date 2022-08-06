@@ -1,332 +1,169 @@
-// Codeworks - Blackjack Game - Javascript
-// Developed by Katie'
+//global variables
+var dealerSum = 0;
+var yourSum = 0;
+var dealerAceCount = 0;
+var playerAceCount = 0;
+var hidden;
+var deck;
 
-$(document).ready (() => {
+//Will allow the user to draw card whenever yourSum is less than <= 21
+var canHit = true;
 
 
-    // Define global variables
-    
-    let userHand, dealerHand, currentDeck, activeUser;
-    let score = {
-        user: 0,
-        dealer: 0
-    }
-    let userName = 'Player';
-    let htmlBase = 'https://raw.githubusercontent.com/crobertsbmw/deckofcards/master/static/img/';
-      
-    
-    
-    // Given the current deck, select a card.
-    // The deck is an object - iterate through key value pairs to push each to a single array.
-    // Randomly select a card in the array, given its length.
-    // Return the dealt card.
-    
-    function pickCard(deck) {
-        
-        let cards = [];
-        
-        for (suit in deck) {
-          deck[suit].forEach( (val) => cards.push([suit,val]));
-        }
-        
-        let dealtCard = cards[Math.floor(Math.random()*cards.length)];
-        currentDeck = deleteCard(dealtCard, deck);
-    
-        return dealtCard;
-        
-    }
-    
-    
-    // After dealing a card, remove it from the deck.
-    
-    function deleteCard(card, deck) {
-        
-        let suit = card[0];
-        let cardIndex = deck[suit].indexOf(card[1]);
-        deck[suit].splice(cardIndex,1);
-        return deck;
-    }
-      
-    
-    // Deal the first two cards.
-    // The user's card are face up. The dealer has one face up card, one face down.
-    // Calculate the score to see if the user already won with Blackjack.
-    
-    function deal() {
-        
-        userHand.push(pickCard(currentDeck));
-        $("#userCard0").attr('src',htmlBase + userHand[0][1]+userHand[0][0]+'.png');
-        dealerHand.push(pickCard(currentDeck));
-      $("#dealerCard0").attr('src','https://upload.wikimedia.org/wikipedia/commons/d/d4/Card_back_01.svg');
-        userHand.push(pickCard(currentDeck));
-        $(".userHand").append("<img id='userCard1' src="+htmlBase+ userHand[1][1]+userHand[1][0]+'.png'+">");
-        dealerHand.push(pickCard(currentDeck));
-        $(".dealerHand").append("<img id='userCard1' src="+htmlBase+dealerHand[1][1]+dealerHand[1][0]+'.png'+">");
-        
-        winner(handScore(userHand),handScore(dealerHand),activeUser,1);
-    }
-    
-    
-    // Calculate a given hand's score.
-    // Each card's value is its number. If it's a K, Q, or J, then it's 10.
-    // Calculate the aces' value within the hand.
-    // If the hand's value is greater than 10, then the ace's value is 1.
-    // If the hand's value is less than or equal to 10, then the ace's value is 11. 
-    
-    function handScore(hand) {
-        
-        let score = 0;
-        let aces = hand.filter(x => x[1] === 'A');
-        hand = hand.filter(x => x[1] !== 'A');
-        
-        for(let i=0; i<hand.length; i++) {
-            let value = hand[i][1];
-            ['K','Q','J',0].indexOf(value) !== -1 ? score += 10 : score += value;
-        }          
-      
-        if (aces.length !== 0) {
-          aces.forEach( (ace) => score > 10 ? score+=1 : score+=11);
-        }
-         
-        return score;      
-    }
-    
-    
-    // Take the user's score and the dealer's score
-    // If there's a winner or push, then end the game, and display the result.
-    // Update the winner's score.
-    // If there is no winner, then continue. 
-    // Calculate the user's current score, and display next to their name.
-    
-    function winner(userScore, dealerScore, activeUser, round=0) {
-        
-        if(round===1) {
-            if(userScore === 21) {
-                score.user += 1;
-                endGame()
-            $('#userName').addClass('winnerBlink');
-            }    	
-        }
-    
-        else {
-            if (userScore > 21) {
-                score.dealer += 1;
-                endGame()
-                $('#dealer').addClass('winnerBlink');
-            }
-            else if(userScore === 21 && dealerScore !== 21) {
-                score.user += 1;
-                endGame()
-            $('#userName').addClass('winnerBlink');
-            }
-        
-            else {
-                if(activeUser===false && dealerScore >= 17) {
-                    if (dealerScore > 21) {
-                        score.user += 1;
-                        endGame()
-                        $('#userName').addClass('winnerBlink');
-                    }
-                    else if (dealerScore > userScore) {
-                        score.dealer += 1;
-                        endGame()
-                        $('#dealer').addClass('winnerBlink');
-                    }
-                    else if(dealerScore === userScore) {
-                        endGame()
-                    $('#dealer').addClass('winnerBlink');
-                $('#userName').addClass('winnerBlink');
-                    }
-                    else {
-                        score.user += 1;
-                        endGame()
-                        $('#userName').addClass('winnerBlink');
-                    }
-                }
-            }
-        }
-    
-        $("#userName").html(userName+' - '+handScore(userHand));
-    
-    }
-    
-    
-    
-    // "Hit" the hand with a new card
-    // Calculate the score and potential winner
-    
-    function hit(player, hand, activeUser) {
-    
-        hand.push(pickCard(currentDeck));
-        let nextCardIndex = hand.length-1;
-        
-        if(player==='user') {
-            $('.userHand').append("<img id='"+player+'Card'+nextCardIndex+"' src="+htmlBase+hand[nextCardIndex][1]+hand[nextCardIndex][0]+'.png'+">");
-        }
-        else if(player==='dealer') {
-            $('.dealerHand').append("<img id='"+player+'Card'+nextCardIndex+"' src="+htmlBase+hand[nextCardIndex][1]+hand[nextCardIndex][0]+'.png'+">");	
-        }
-    
-        winner(handScore(userHand),handScore(dealerHand), activeUser);
-    
-    }
-    
-    
-    // Disable the "hit" button.
-    // Reveal the face down card to the user.
-    // Show the dealer's score next to the Dealer text.
-    // Calculate the score and possible winner.
-    // The dealer continues to receive cards until his hand is at least 17
-    
-    function stand() {
-    
-        $("#hit").prop("disabled",true);
-        $("#dealerCard0").attr('src', htmlBase+dealerHand[0][1]+dealerHand[0][0]+'.png');
-      $("#dealer").html('Dealer - '+handScore(dealerHand));
-        
-        setTimeout(function(){
-            if (handScore(dealerHand)<17) {
-                hit('dealer', dealerHand, false);
-                stand();	
-            }
-        },1000);
-    }
-    
-    
-    
-    // Disable buttons and end game 
-    // If the dealer's card wasn't revealed yet, show.
-    // If the user's and dealer's scores weren't shown, then show.
-    
-    function endGame() {
-        
-        $("#dealerCard0").attr('src',htmlBase+dealerHand[0][1]+dealerHand[0][0]+'.png');
-    
-        isPlaying = false
-        $("#hit").prop("disabled",true);
-        $("#stand").prop("disabled",true);
-        $("#playAgain").show();
-        $("#leaderboard").show()
-    
-      $("#dealer").html('Dealer - '+handScore(dealerHand));
-        $(".score").html(userName + ' ' +score.user+' - '+score.dealer+' Dealer');
-    }
-    
-    
-    // Call the hit() function when the "hit" button is clicked
-    
-    $(function hitButton() {
-        $('#hit').on('click', () => hit('user', userHand, true));
-    });
-    
-    
-    // Call the stand() function when the "stand" button is clicked
-    
-    $(function standButton() {
-        $('#stand').on('click', () => {
-            winner(handScore(userHand),handScore(dealerHand), false);
-            stand()
-        });
-    });
-    
-    
-    // Call the playGame() function when the "play again" button is clicked
-    
-    $(function playAgainButton() {
-        
-        $("#playAgain").on('click', () => {
-            $("#result").html('');
-            $(".dealerHand").empty();
-            $(".userHand").empty();
-            $(".dealerHand").append("<img id='dealerCard0' src=\"\">");
-            $(".userHand").append("<img id='userCard0' src=\"\">");
-        $('#dealer').removeClass('winnerBlink');
-        $('#userName').removeClass('winnerBlink');
-            playGame(true)});
-    })
-    
-    
-    
-    // Initialize the game. 
-    // Enable/disable appropriate buttons.
-    // Clear the user's and dealer's hands. 
-    // Reset the deck to 52 cards.
-    // Deal the first two cards per person.
-    
-    function playGame(isPlaying) {
-    
-        $("#hit").prop("disabled",false);
-        $("#stand").prop("disabled",false);
-        $("#playAgain").hide();
-        $("#leaderboard").hide();
-      $("#dealer").html('Dealer');
-        $("#userName").html(userName);
-    
-        userHand = [];
-        dealerHand = [];
-        currentDeck = {
-               H: ['A', 'K', 'Q', 'J', 0, 9, 8, 7, 6, 5, 4, 3, 2],
-               D: ['A', 'K', 'Q', 'J', 0, 9, 8, 7, 6, 5, 4, 3, 2],
-               S: ['A', 'K', 'Q', 'J', 0, 9, 8, 7, 6, 5, 4, 3, 2],
-               C: ['A', 'K', 'Q', 'J', 0, 9, 8, 7, 6, 5, 4, 3, 2]
-            };
-        activeUser = true;
-    
-        deal();
+window.onload =function() {
+    buildDeck();
+    shuffleDeck();
+    startGame();
+}
+
+function buildDeck() {
+    let values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
+    let types = ["C", "H", "D", "S"];
+    deck = [];
+
+    //LOOP THROUGHT THE 2 ARAAYS
+    //FIRST GO THROUGH ALL THE TYPES
+    for (let i = 0; i < types.length; i++) {
+        //THEN GO THROUGH ALL YouR VALUES
+        for(let j = 0; j <values.length; j++){
             
+            deck.push(values[j] + types [i]);
+           
+        }
     }
-      
-    // ---------------------------------------------------------------
-    // ------------- Functions called to start the game---------------
-    // ---------------------------------------------------------------
-    playGame(true);
-    });
+    console.log(deck);
+}
+
+function shuffleDeck() {
+    for(let i = 0; i <deck.length; i++){
+        //gives us a number between 0 and 52
+        let j = Math.floor(Math.random()* deck.length);
+        let temp = deck[i];
+        deck[i] = deck[j];
+        deck[j] = temp;
+    }
+    console.log(deck);
+}
+
+function startGame () {
+    hidddn = deck.pop();
+    dealerSum+= getRandomValues(hidden);
+    dealerAceCount += checkAce(hidden);
+    // console.log(hidden);
+    // console.log(dealerSum);
+    while (dealerSum < 17) {
+        //created imnage tag
+        let cardImg = document.createElement("img");
+        //get card from deck
+        let card = deck.pop();
+        cardImg.src = "./cards/" + card + ".png";
+        //increment dealer sum 
+        dealerSum=+ getValue(card);
+        dealerAceCount += checkAce(card);
+        //appedn the image card to the dealer-card div 
+        document.getElementById("dealer-cards").append(cardImg);
+    }
+    console.log(dealerSum );
+
+    for (let i = 0; i < 2; i++);{
+        let cardImg = document.createElement("img");
+        let card = deck.pop();
+        cardImg.src = "./cards/" + card + ".png";
+        yourSum=+ getValue(card);
+        playerAceCount += checkAce(card); 
+        document.getElementById("player-cards").append(cardImg);
+    }
+
+    console.log(playerSum);
+
+
+    //EVENT LISTENER FOR BUTTONS
+    document.getElementById("hit").addEventListener("click" , hit);
+
+    //EVENT LISTEENR FOR STAY BUTTON
+    document.getElementById("stay").addEventListener("click" , stand);
+}
+
+
+//HIT BUTTON FUCNTION
+function hit(){
+   if(!canHit) {
+    return;
+   }
+    let cardImg = document.createElement("img");
+    let card = deck.pop();
+    cardImg.src = "./cards/" + card + ".png";
+    yourSum=+ getValue(card);
+    playerAceCount += checkAce(card); 
+    document.getElementById("player-cards").append(cardImg);
+//CANNOT EXCEED OVER 21    
+    if(reduceAce(playerSum, playerAceCount) > 21) {
+        canHit = false;
+    }
     
-    
-    
-    // ---------------------------------------------------------------
-    // ------------- Refactoring---------------
-    // ---------------------------------------------------------------
-    
-      class Deck {
-        constructor () {
-          this.deck = {
-               H: ['A', 'K', 'Q', 'J', 0, 9, 8, 7, 6, 5, 4, 3, 2],
-               D: ['A', 'K', 'Q', 'J', 0, 9, 8, 7, 6, 5, 4, 3, 2],
-               S: ['A', 'K', 'Q', 'J', 0, 9, 8, 7, 6, 5, 4, 3, 2],
-               C: ['A', 'K', 'Q', 'J', 0, 9, 8, 7, 6, 5, 4, 3, 2]
-              }
+}
+
+
+//STAnd BUTTON FUNCTION
+function stand() {
+    dealerSum = reduceAce(dealerSum, dealerAceCount);
+    playerSum = reduceAce(playerSum, playerAceCount);
+
+    canHit = false;
+    document.getElementById("hidden").src = "./cards/" + hidden + ".png";
+
+
+    let message = "";
+    if (playerSum > 21) {
+        message = "You Lose"
+    } else if (dealerSum > 21) {
+        message ="You Win!"
+    }
+
+    //IF PLAYER AND DEALER HAVE <21
+    else if (playerSum == dealerSum) {
+        message = "Tie!";
+    }
+    else if (playerSum > dealerSum) {
+        message = "You Win!";
+    }
+    else if (playerSum < dealerSum) {
+        message = "You Lose!";
+    }
+
+    document.getElementById("dealer-sum").innerText = dealerSum;
+    document.getElementById("player-sum").innerText = playerSum;
+    document.getElementById("results").innerText = message;
+}
+
+function getValue(card) {
+    let data = card.split();
+    let value = data[0];
+    //if it's not a number (containing digists)
+    //If its not a number it can be: A J Q K
+    if (isNaN(value)){ 
+        if (value == "A"){
+            return 11;
         }
+        return 10;
+    }
+    //If a value is not returned from ^^^^. That means a number was returned
+    return parseInt(value);
         
-        deleteCard (card) {
-          let suit = card[0];
-          let cardIndex = this.deck[suit].indexOf(card[1]);
-          this.deck[suit].splice(cardIndex,1);
-          return this.deck;
-        }
-      }
-      
-      class Hand {
-        constructor () {
-          this.hand = [];
-        }
-        
-        pickCard (deck) {
-          let cards = [];
+}
     
-          for (suit in deck) {
-            deck[suit].forEach( (val) => cards.push([suit,val]));
-          }
-    
-          let dealtCard = cards[Math.floor(Math.random()*cards.length)];
-          currentDeck = this.deleteCard(dealtCard, deck);
-    
-          return dealtCard;
-        }
-        
-        deleteCard (card, deck) {
-          return deck;
-        }
-      }
-    
-    
+
+function checkAce(card) {
+    if (card[0] == "A"){
+        return 1;
+    }
+    return 0;
+}
+
+function reduceAce(playerSum, playerAceCount) {
+    while (playerSum > 21 && playerAceCount > 0) {
+        playerSum -= 10;
+        playerAceCount -= 1;
+    }
+    return playerSum;
+}
