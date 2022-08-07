@@ -1,13 +1,12 @@
-
 [
   {
     "username": "p1rules",
-    "password": "123456",
+    "password": "password1",
     "cash": 5000
   },
   {
     "username": "p2winrar",
-    "password": "123457",
+    "password": "password2",
     "cash": 8800
   },
   {
@@ -22,6 +21,31 @@
   },
   {
     "username": "p5sacred",
+    "password": "password5",
+    "cash": 334455
+  },
+  {
+    "username": "p6demontime",
+    "password": "password6",
+    "cash": 55555
+  },
+  {
+    "username": "p7heaven",
+    "password": "password7",
+    "cash": 4444
+  },
+  {
+    "username": "p8grate",
+    "password": "password8",
+    "cash": 4
+  },
+  {
+    "username": "p9wellthtsfine",
+    "password": "password9",
+    "cash": 95156
+  },
+  {
+    "username": "ptenoften",
     "password": "123451",
     "cash": 334455
   },

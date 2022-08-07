@@ -30,8 +30,9 @@ const loginForm = async (event) => {
         const Password = document.querySelector
         ('#password-signup').value.trim();
 
-        if (Username && Password) {
-            const response = await fetch('/player', {
+        if (username && password) {
+            const response = await fetch('/api/player-routes', {
+
                 method: 'POST',
                 body: JSON.stringify({ Username, Password }),
                 headers : {'content-type': 'application/json'},
