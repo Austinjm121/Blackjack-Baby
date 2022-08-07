@@ -10,24 +10,24 @@ const path = require('path');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 // connections information
 const sequelize = require('./config/connection');
-// const auth = require('./utils/auth')
+const auth = require('./utils/auth')
 
 // Sets up the Express App
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// // cookies
-// const sess = {
-//   secret: 'Super secret secret',
-//   cookie: {},
-//   resave: false,
-//   saveUninitialized: true,
-//   store: new SequelizeStore({
-//     db: sequelize
-//   })
-// };
-// // session connection
-// app.use(session(sess));
+// cookies
+const sess = {
+  secret: 'Super secret secret',
+  cookie: {},
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize
+  })
+};
+// session connection
+app.use(session(sess));
 
 
 //setting view engine. 

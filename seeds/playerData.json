@@ -11,12 +11,12 @@
   },
   {
     "username": "p3epic",
-    "password": "password3",
+    "password": "123458",
     "cash": 1000000
   },
   {
     "username": "p4rich",
-    "password": "password4",
+    "password": "123459",
     "cash": 9999999
   },
   {
@@ -46,7 +46,37 @@
   },
   {
     "username": "ptenoften",
-    "password": "password10",
+    "password": "123451",
+    "cash": 334455
+  },
+  {
+    
+    "username": "p6demontime",
+    "password": "123450",
+    "cash": 55555
+  },
+  {
+   
+    "username": "p7heaven",
+    "password": "123452",
+    "cash":4444
+  },
+  {
+    
+    "username": "p8grate",
+    "password": "123453",
+    "cash": 4
+  },
+  {
+   
+    "username": "p9wellthtsfine",
+    "password": "123454",
+    "cash": 95156
+  },
+  {
+    
+    "username": "ptenoften",
+    "password": "123455",
     "cash": 65000
   }
 ]
