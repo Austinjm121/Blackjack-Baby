@@ -31,7 +31,7 @@ const loginForm = async (event) => {
         ('#password-signup').value.trim();
 
         if (username && password) {
-            const response = await fetch('/routes/player', {
+            const response = await fetch('/api/player-routes', {
                 method: 'POST',
                 body: JSON.stringify({ username, password }),
                 headers : {'content-type': 'application/json'},
