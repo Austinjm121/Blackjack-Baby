@@ -1,6 +1,6 @@
 const Player = require('./Player');
 const Dealer = require('./Dealer');
-const Card = require('./Cards');
+const Card = require('./Card');
 
 
 Player.hasOne(Card,{
