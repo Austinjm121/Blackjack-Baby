@@ -2,18 +2,18 @@
 const loginForm = async (event) => {
     event.preventDefault();
 
-    const username = document.querySelector
-    ('username_login').value.trim();
+    const Username = document.querySelector
+    ('#username-login').value.trim();
 
-    const password = document.querySelector('password_login').value.trim();
-    if(username && password) {
-        const response = await fetch('/routes/login',{
+    const Password = document.querySelector('#password-login').value.trim();
+    if(Username && Password) {
+        const response = await fetch('/login',{
         method: 'POST',
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ Username, Password }),
         headers: { 'content-type': 'application/json'},
         });
          
-        if (respond.ok) {
+        if (response.ok) {
             document.location.replace('/');
         } else {
             alert('')
@@ -25,15 +25,15 @@ const loginForm = async (event) => {
     const signupForm = async (event) => {
         event.preventDefault();
 
-        const username = document.querySelector
+        const Username = document.querySelector
         ('#username-signup').value.trim();
-        const password = document.querySelector
+        const Password = document.querySelector
         ('#password-signup').value.trim();
 
-        if (username && password) {
-            const response = await fetch('/routes/player', {
+        if (Username && Password) {
+            const response = await fetch('/player', {
                 method: 'POST',
-                body: JSON.stringify({ username, password }),
+                body: JSON.stringify({ Username, Password }),
                 headers : {'content-type': 'application/json'},
             });
 
@@ -45,7 +45,6 @@ const loginForm = async (event) => {
         }
     };
 
-    // Listeners
     document.querySelector('.username-form')
     .addEventListener('submit', loginForm);
 
