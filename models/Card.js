@@ -28,7 +28,8 @@ Card.init(
       timestamps: false,
       freezeTableName: true,
       underscored: true,
-      modelName: 'cards',
+      modelName: 'Card',
+
     }
   );
   

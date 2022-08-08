@@ -24,7 +24,7 @@ Dealer.init(
         sequelize,
         freezeTableName: true,
         underscored: true,
-        modelName: 'dealer',
+        modelName: 'Dealer',
       }
 );
 
