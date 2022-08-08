@@ -1,7 +1,12 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../controllers/api/index');
+const bcrypt = require('bcrypt');
+const sequelize = require('../config/connection');
 
-class Player extends Model {}
+class Player extends Model {
+  // checkPassword(loginPw) {
+  //   return bcrypt.compareSync(loginPw, this.password);
+  // }
+}
 
 Player.init(
     {
@@ -12,25 +17,35 @@ Player.init(
             autoIncrement: true,
         },
         username: {
-                type: DataTypes, STRING,
+                type: DataTypes.STRING,
                 allowNull: false,
         },
-        cash: {
-            type: DataType,INTEGER,
+        password:{
+            type: DataTypes.STRING,
             allowNull: false,
+            unique:true,
+            validate:{
+                isUsername: true,
+            },
         },
-        winnings: {
-            type: DataType,INTEGER,
+        cash: {
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
     },
     {
+        // hooks: {
+        //     async beforeCreate(newUserData) {
+        //       newUserData.password = await bcrypt.hash(newUserData.password, 10);
+        //       return newUserData;
+        //     },
+        //   },
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
         modelName: 'Player',
-    },
+    }
 );
 
 module.exports = Player;
