@@ -371,3 +371,13 @@ button:hover {
     color: #1b1e1c;
   }
 }
+
+/* cash */
+#cash, #bank {
+  color: #FFF;
+  font: 700 18px/20px Helvetica, Arial, Verdana, sans-serif;
+  margin: 12px 0;
+  position: relative;
+  text-shadow: 1px 1px #000;
+  z-index: 1;
+}
