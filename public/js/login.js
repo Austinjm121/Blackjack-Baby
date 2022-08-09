@@ -1,4 +1,10 @@
+
+const uuid = require("../../helpers/uuid");
+
+
+
 // Login with username and password
+
 const loginForm = async (event) => {
     event.preventDefault();
 
@@ -10,6 +16,7 @@ const loginForm = async (event) => {
         method: 'POST',
         body: JSON.stringify({ username, password }),
         headers: { 'content-type': 'application/json'},
+        user_id: uuid()
         });
          
         if (response.ok) {
@@ -19,6 +26,8 @@ const loginForm = async (event) => {
         }
     }
     };
+    
+
 
     // Create Account with username and password 
     const signupForm = async (event) => {
