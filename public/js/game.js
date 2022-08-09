@@ -235,6 +235,15 @@ $(document).ready (() => {
     }
     
     
+    // /LEADERBOARD BUTTON
+    $(function leaderboardButton() {
+
+        $("#leaderboard").on('click', () => {
+            endGame(true)
+            window.location.replace("/api/leaders")
+        });
+    })
+
     // Call the hit() function when the "hit" button is clicked
     
     $(function hitButton() {
