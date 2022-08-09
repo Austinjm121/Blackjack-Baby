@@ -16,7 +16,7 @@ const auth = require('./utils/auth')
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// cookies
+// Cookies
 const sess = {
   secret: 'Super secret secret',
   cookie: {},

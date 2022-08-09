@@ -5,6 +5,6 @@ const leaderRoutes = require('./leaderboard-routes');
 
 router.use('/game', gameRoutes);
 router.use('/leaders', leaderRoutes);
-router.use('/player', playerRoutes);
+router.use('/players', playerRoutes);
 
 module.exports = router;
