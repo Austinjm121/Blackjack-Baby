@@ -18,6 +18,9 @@ const withAuth = require("./utils/auth");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+
+// Cookies
+
 const sess = {
   // requests uuid from login
   genid: function(req) {
