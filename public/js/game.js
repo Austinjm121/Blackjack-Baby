@@ -13,7 +13,7 @@ $(document).ready (() => {
         user: 0,
         dealer: 0
     }
-    let userName = 'Player';
+    // let userName = 'Player';
     let htmlBase = 'https://raw.githubusercontent.com/crobertsbmw/deckofcards/master/static/img/';
       
     
@@ -100,7 +100,7 @@ $(document).ready (() => {
             body: JSON.stringify({ cash: amount }),
             headers : {'Content-Type': 'application/json'},
         });
-        // $('#hte-cash-thang').text(response.newCash)
+        $('#playerCash').text(response.newCashVal)
     }
     
     // Take the user's score and the dealer's score
@@ -231,7 +231,7 @@ $(document).ready (() => {
         $("#leaderboard").show()
     
       $("#dealer").html('Dealer - '+handScore(dealerHand));
-        $(".score").html(userName + ' ' +score.user+' - '+score.dealer+' Dealer');
+        $(".score").html(' ' +score.user+' - '+score.dealer+' Dealer');
     }
     
     
@@ -240,7 +240,7 @@ $(document).ready (() => {
 
         $("#leaderboard").on('click', () => {
             endGame(true)
-            window.location.replace("/api/leaders")
+            window.location.replace("/leaderboard")
         });
     })
 
@@ -291,7 +291,7 @@ $(document).ready (() => {
         $("#playAgain").hide();
         $("#leaderboard").hide();
       $("#dealer").html('Dealer');
-        $("#userName").html(userName);
+        // $("#userName").html(userName);
     
         userHand = [];
         dealerHand = [];
