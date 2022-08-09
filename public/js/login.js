@@ -1,47 +1,49 @@
+
 const uuid = require("../../helpers/uuid");
 
 
-// Form to login with username and password
+
+// Login with username and password
+
 const loginForm = async (event) => {
     event.preventDefault();
 
-    const Username = document.querySelector
-    ('#username-login').value.trim();
+    const username = document.querySelector('#username-login').value.trim();
+    const password = document.querySelector('#password-login').value.trim();
 
-    const Password = document.querySelector('#password-login').value.trim();
-    if(Username && Password) {
-        const response = await fetch('/login',{
+    if(username && password) {
+        const response = await fetch('/api/players/login',{
         method: 'POST',
-        body: JSON.stringify({ Username, Password }),
+        body: JSON.stringify({ username, password }),
         headers: { 'content-type': 'application/json'},
         user_id: uuid()
         });
          
         if (response.ok) {
-            document.location.replace('/');
+            document.location.replace('/game');
         } else {
-            alert('')
+            alert(response.statusText);
         }
     }
     };
     
 
 
-    // Form to sign Up with username and password 
+    // Create Account with username and password 
     const signupForm = async (event) => {
         event.preventDefault();
 
-        const Username = document.querySelector
+        const username = document.querySelector
         ('#username-signup').value.trim();
-        const Password = document.querySelector
+        const password = document.querySelector
         ('#password-signup').value.trim();
 
         if (username && password) {
-            const response = await fetch('/api/player-routes', {
+            const response = await fetch('/api/players', {
 
                 method: 'POST',
-                body: JSON.stringify({ Username, Password }),
-                headers : {'content-type': 'application/json'},
+                body: JSON.stringify({ username, password }),
+                headers : {'Content-Type': 'application/json'},
             });
 
             if(response.ok) {
@@ -52,7 +54,7 @@ const loginForm = async (event) => {
         }
     };
 
-    document.querySelector('.username-form')
+    document.querySelector('.login-form')
     .addEventListener('submit', loginForm);
 
     document.querySelector('.signup-form')
