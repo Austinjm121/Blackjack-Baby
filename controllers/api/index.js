@@ -1,10 +1,9 @@
 const router = require('express').Router();
-const playerRoutes = require('./player-routes')
-const gameRoutes = require('./game-routes');
-const leaderRoutes = require('./leaderboard-routes');
+const withAuth = require('../../utils/auth');
+const playerRoutes = require('./player-routes');
+const gameApiRoutes = require('./game-routes');
 
-router.use('/game', gameRoutes);
-router.use('/leaders', leaderRoutes);
+router.use('/game', withAuth, gameApiRoutes);
 router.use('/players', playerRoutes);
 
 module.exports = router;

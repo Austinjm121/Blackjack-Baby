@@ -13,7 +13,7 @@ const loginForm = async (event) => {
         });
          
         if (response.ok) {
-            document.location.replace('/api/game');
+            document.location.replace('/game');
         } else {
             alert(response.statusText);
         }

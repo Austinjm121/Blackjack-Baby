@@ -1,6 +1,8 @@
 // Codeworks - Blackjack Game - Javascript
 // Developed by Katie'
 
+
+
 $(document).ready (() => {
 
 
@@ -90,7 +92,16 @@ $(document).ready (() => {
          
         return score;      
     }
-    
+
+
+    const addCashToUser = async (amount) => {
+        const response = await fetch('/api/game/add-cash', {
+            method: 'POST',
+            body: JSON.stringify({ cash: amount }),
+            headers : {'Content-Type': 'application/json'},
+        });
+        // $('#hte-cash-thang').text(response.newCash)
+    }
     
     // Take the user's score and the dealer's score
     // If there's a winner or push, then end the game, and display the result.
@@ -99,12 +110,13 @@ $(document).ready (() => {
     // Calculate the user's current score, and display next to their name.
     
     function winner(userScore, dealerScore, activeUser, round=0) {
-        
+        let winner;
         if(round===1) {
             if(userScore === 21) {
                 score.user += 1;
                 endGame()
             $('#userName').addClass('winnerBlink');
+            winner = 'user';
             }    	
         }
     
@@ -113,11 +125,13 @@ $(document).ready (() => {
                 score.dealer += 1;
                 endGame()
                 $('#dealer').addClass('winnerBlink');
+                winner = 'dealer';
             }
             else if(userScore === 21 && dealerScore !== 21) {
                 score.user += 1;
                 endGame()
             $('#userName').addClass('winnerBlink');
+            winner = 'user';
             }
         
             else {
@@ -126,26 +140,34 @@ $(document).ready (() => {
                         score.user += 1;
                         endGame()
                         $('#userName').addClass('winnerBlink');
+                        winner = 'user';
                     }
                     else if (dealerScore > userScore) {
                         score.dealer += 1;
                         endGame()
                         $('#dealer').addClass('winnerBlink');
+                        winner = 'dealer';
                     }
                     else if(dealerScore === userScore) {
                         endGame()
                     $('#dealer').addClass('winnerBlink');
                 $('#userName').addClass('winnerBlink');
+                winner = 'tie';
                     }
                     else {
                         score.user += 1;
                         endGame()
                         $('#userName').addClass('winnerBlink');
+                        winner = 'user';
                     }
                 }
             }
         }
-    
+        if (winner === 'user') {
+            addCashToUser(100);
+        } else if (winner === 'tie') {
+            addCashToUser(50);
+        }
         $("#userName").html(userName+' - '+handScore(userHand));
     
     }
