@@ -17,7 +17,7 @@ router.get('/currentPlayer', async (req, res) => {
   try {
     // Find the logged in user based on the session ID
     const playerData = await Player.findByPk(req.session.user_id, {
-      attributes: { include: ['cash'] },    
+      attributes: { include: ['balance'] },    
     });
 
     const player = playerData.get({ plain: true });
@@ -26,7 +26,7 @@ router.get('/currentPlayer', async (req, res) => {
 
     res.render('singleplayer', {
       ...player,
-      layout: 'game.handlebars', player: {username: player.username, cash: player.cash},
+      layout: 'game.handlebars', player: {username: player.username, balance: player.balance},
       logged_in: true
     });
   } catch (err) {
@@ -41,7 +41,7 @@ router.post('/', async (req, res) => {
 
     const plyr = {
       ...req.body,
-      cash: 100,
+      balance: 5000,
     };
 
     const playerData = await Player.create(plyr);

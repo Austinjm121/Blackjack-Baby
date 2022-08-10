@@ -1,18 +1,18 @@
 const router = require('express').Router();
 const { Player } = require('../../models');
 
-router.post('/add-cash', async (req, res) => {
+router.post('/add-balance', async (req, res) => {
     const player = await Player.findByPk(req.session.user_id);
-    const oldCash = player.cash;
-    const newCashVal = player.cash + req.body.cash;
+    const oldBalance = player.balance;
+    const newBalanceVal = player.balance + req.body.balance;
     await player.update({
-        cash: newCashVal,
+        balance: newBalanceVal,
     });
     await player.save();
     // console.log(player);
-    res.status(200).json({newCash: newCashVal, oldCash});
-    console.log(newCashVal);
-    console.log(oldCash)
+    res.status(200).json({newBalance: newBalanceVal, oldBalance});
+    console.log(newBalanceVal);
+    console.log(oldBalance)
 });
 
 module.exports = router;

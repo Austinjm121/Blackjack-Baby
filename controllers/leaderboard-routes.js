@@ -5,14 +5,14 @@ router.get('/', async (req, res) => {
     try {
         const playerData = await Player.findAll({
             order: [
-                ['cash', 'DESC'],                
+                ['balance', 'DESC'],                
             ],
             limit: 10,
         });
         res.render('leaderboard', {
             layout: 'start-end.handlebars',
             players: playerData.map((p) => {
-                return {username: p.username, cash: p.cash};
+                return {username: p.username, balance: p.balance};
             })
         });
       } catch (err) {

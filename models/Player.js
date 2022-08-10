@@ -25,7 +25,7 @@ Player.init(
             allowNull: false,
             unique:true,
         },
-        cash: {
+        balance: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
