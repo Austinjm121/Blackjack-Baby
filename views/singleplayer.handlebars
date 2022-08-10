@@ -1,61 +1,62 @@
 <div>
-   <h2 id="dealer" class="player">Dealer</h2>
-   <div class="dealerHand">
-      <img id="dealerCard0" src="">
-   </div>
-   <div class="userHand">
-      <img id="userCard0" src="">
-   </div>
-   <h2 id="userName" class="player">{{username}}</h2>
-   <div class="buttons">
-      <button id="hit"> Hit </button>
-      <button id="stand"> Stand </button>
-      <button id="playAgain">Play Again?</button>
-      <div id="balance-bet-box">
-         <div class="balance-bet">
-            Balance
-            <div id="balance"></div>
-         </div>
-         <div class="balance-bet">
-            Total Bet
-            <div id="total-bet"></div>
-         </div>
+   <section class="hide-element" id="game">
+      <h2 id="dealer" class="player">Dealer</h2>
+      <div class="dealerHand">
+         <img id="dealerCard0" src="">
       </div>
-      <div id="bets-container" class="noclick">
-         <span>
-         <button class="max-clear update-balance-bet">CLEAR</button>
-         </span>
-         <span>
-         <button class="betButtons update-balance-bet" id="chip10" value="10">10</button>
-         </span>
-         <span>
-         <button class="betButtons update-balance-bet" id="chip50" value="50">50</button>
-         </span>
-         <span>
-         <button class="betButtons update-balance-bet" id="chip100" value="100">100</button>
-         </span>
-         <span>
-         <button class="betButtons update-balance-bet" id="chip500" value="500">500</button>
-         </span>
-         <span>
-         <button class="betButtons update-balance-bet" id="chip1k" value="1000">1K</button>
-         </span>
-         <span>
-         <button class="betButtons update-balance-bet" id="chip5k" value="5000">5K</button>
-         </span>
-         <span>
-         <button class="betButtons update-balance-bet" id="chip10k" value="10000">10K</button>
-         </span>
-         <span>
-         <button class="betButtons update-balance-bet" id="chip50k" value="50000">50K</button>
-         </span>
-         <span>
-         <button class="betButtons update-balance-bet" id="chip100k" value="100000">100K</button>
-         </span>
-         <span>
-         <button class="max-clear update-balance-bet">MAX</button>
-         </span>
+      <div class="userHand">
+         <img id="userCard0" src="">
       </div>
-      <button id="leaderboard" href="/api/leaderboard">Leaderboard</button>
+      <h2 id="userName" class="player">{{username}}</h2>
+      <div class="buttons">
+         <button id="hit"> Hit </button>
+         <button id="stand"> Stand </button>
+         <button id="playAgain">Play Again?</button>
+   </section>
+   <div id="balance-bet-box">
+   <div class="balance-bet">
+   <div id="balance"></div>
+   </div>
+   <div class="balance-bet">
+   <div id="bet"></div>
+   </div>
+   </div>
+   <button class="btn btn--border btn--primary btn--animated hide-element" id="placeBet">Place bet</button>
+   <div id="bets-container" class="noclick">
+   <span>
+   <button class="max-clear update-balance-bet" id="clearBet">CLEAR</button>
+   </span>
+   <span>
+   <button class="betButtons update-balance-bet" id="chip10" value="10">10</button>
+   </span>
+   <span>
+   <button class="betButtons update-balance-bet" id="chip50" value="50">50</button>
+   </span>
+   <span>
+   <button class="betButtons update-balance-bet" id="chip100" value="100">100</button>
+   </span>
+   <span>
+   <button class="betButtons update-balance-bet" id="chip500" value="500">500</button>
+   </span>
+   <span>
+   <button class="betButtons update-balance-bet" id="chip1k" value="1000">1K</button>
+   </span>
+   <span>
+   <button class="betButtons update-balance-bet" id="chip5k" value="5000">5K</button>
+   </span>
+   <span>
+   <button class="betButtons update-balance-bet" id="chip10k" value="10000">10K</button>
+   </span>
+   <span>
+   <button class="betButtons update-balance-bet" id="chip50k" value="50000">50K</button>
+   </span>
+   <span>
+   <button class="betButtons update-balance-bet" id="chip100k" value="100000">100K</button>
+   </span>
+   <span>
+   <button class="max-clear update-balance-bet" id="maxBet">MAX</button>
+   </span>
+   </div>
+   <button id="leaderboard" href="/api/leaderboard">Leaderboard</button>
    </div>
 </div>

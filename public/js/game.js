@@ -1,3 +1,6 @@
+var balance = 5000;
+var bet = 0;
+
 // Codeworks - Blackjack Game - Javascript
 // Developed by Katie'
 
@@ -13,6 +16,7 @@ $(document).ready(() => {
     }
     let userName = 'Player';
     let htmlBase = 'https://raw.githubusercontent.com/crobertsbmw/deckofcards/master/static/img/';
+    updateBalanceBet();
  
  
     // Given the current deck, select a card.
@@ -102,34 +106,48 @@ $(document).ready(() => {
        if (round === 1) {
           if (userScore === 21) {
              score.user += 1;
+             balance += bet * 2;
+             updateBalanceBet();
              endGame()
              $('#userName').addClass('winnerBlink');
           }
        } else {
           if (userScore > 21) {
              score.dealer += 1;
+             balance -= bet * 2;
+             updateBalanceBet();
              endGame()
              $('#dealer').addClass('winnerBlink');
           } else if (userScore === 21 && dealerScore !== 21) {
              score.user += 1;
+             balance += bet * 2;
+             updateBalanceBet();
              endGame()
              $('#userName').addClass('winnerBlink');
           } else {
              if (activeUser === false && dealerScore >= 17) {
                 if (dealerScore > 21) {
                    score.user += 1;
+                   balance += bet * 2;
+                   updateBalanceBet();
                    endGame()
                    $('#userName').addClass('winnerBlink');
                 } else if (dealerScore > userScore) {
                    score.dealer += 1;
                    endGame()
+                   balance -= bet * 2;
+                   updateBalanceBet();
                    $('#dealer').addClass('winnerBlink');
                 } else if (dealerScore === userScore) {
                    endGame()
+                   balance -= bet * 2;
+                   updateBalanceBet();
                    $('#dealer').addClass('winnerBlink');
                    $('#userName').addClass('winnerBlink');
                 } else {
                    score.user += 1;
+                   balance += bet * 2;
+                   updateBalanceBet();
                    endGame()
                    $('#userName').addClass('winnerBlink');
                 }
@@ -217,7 +235,7 @@ $(document).ready(() => {
        });
     });
  
- 
+   
     // Call the playGame() function when the "play again" button is clicked
  
     $(function playAgainButton() {
@@ -230,10 +248,126 @@ $(document).ready(() => {
           $(".userHand").append("<img id='userCard0' src=\"\">");
           $('#dealer').removeClass('winnerBlink');
           $('#userName').removeClass('winnerBlink');
+          var placeBetHide = document.getElementById("placeBet");
+          placeBetHide.classList.add("hide-element");
           playGame(true)
        });
-    })
+   })
  
+   let chipNoise = new Audio('/sounds/chipNoise.mp3')
+   let gameStart = new Audio('/sounds/gameStart.wav')
+
+   function updateBalanceBet() {
+      $('#balance').text('Balance: $' + balance.toString());
+      $('#bet').text('Total Bet: $' + bet.toString())
+      if(0 < bet) {
+         var placeBetShow = document.getElementById("placeBet");
+         placeBetShow.classList.remove("hide-element");
+      } 
+   }
+
+   $('#placeBet').click(function() {
+      gameStart.play();
+      var showGame = document.getElementById("game");
+      showGame.classList.remove("hide-element");
+      var placeBetHide = document.getElementById("placeBet");
+      placeBetHide.classList.add("hide-element");
+   })
+
+   $('#clearBet').click(function() {
+      balance += bet;
+      bet = 0;
+      updateBalanceBet();
+      var placeBetHide = document.getElementById("placeBet");
+      placeBetHide.classList.add("hide-element");
+   })
+
+   $('#maxBet').click(function() {
+      bet = balance;
+      balance = 0;
+      updateBalanceBet();
+   })
+
+   $('#chip10').click(function() {
+      if(10 <= balance) {
+         bet += 10;
+         balance -= 10;
+         chipNoise.play();
+         updateBalanceBet();
+      }
+   })
+
+   $('#chip50').click(function() {
+      if(50 <= balance) {
+         bet += 50;
+         balance -= 50;
+         chipNoise.play();
+         updateBalanceBet();
+      }
+   })
+
+   $('#chip100').click(function() {
+      if(100 <= balance) {
+         bet += 100;
+         balance -= 100;
+         chipNoise.play();
+         updateBalanceBet();
+      }
+   })
+
+   $('#chip500').click(function() {
+      if(500 <= balance) {
+         bet += 500;
+         balance -= 500;
+         chipNoise.play();
+         updateBalanceBet();
+      }
+   })
+
+   $('#chip1k').click(function() {
+      if(1000 <= balance) {
+         bet += 1000;
+         balance -= 1000;
+         chipNoise.play();
+         updateBalanceBet();
+      }
+   })
+
+   $('#chip5k').click(function() {
+      if(5000 <= balance) {
+         bet += 5000;
+         balance -= 5000;
+         chipNoise.play();
+         updateBalanceBet();
+      }
+   })
+
+   $('#chip10k').click(function() {
+      if(10000 <= balance) {
+         bet += 10000;
+         balance -= 10000;
+         chipNoise.play();
+         updateBalanceBet();
+      }
+   })
+
+   $('#chip50k').click(function() {
+      if(50000 <= balance) {
+         bet += 50000;
+         balance -= 50000;
+         chipNoise.play();
+         updateBalanceBet();
+      }
+   })
+
+   $('#chip100k').click(function() {
+      if(100000 <= balance) {
+         bet += 100000;
+         balance -= 100000;
+         chipNoise.play();
+         updateBalanceBet();
+      }
+   })
  
     // Initialize the game. 
     // Enable/disable appropriate buttons.
