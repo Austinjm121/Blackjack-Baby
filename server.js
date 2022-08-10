@@ -42,8 +42,6 @@ const sess = {
 
 };
 
-
-
 // session connection
 app.use(session(sess))
 
@@ -53,7 +51,7 @@ app.engine("handlebars", hbs.engine);
 //set engine to handlevars. This is what our front end wil be
 app.set("view engine", "handlebars");
 //middleware
-
+app.use(routes);
 //middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

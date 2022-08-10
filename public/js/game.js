@@ -16,7 +16,6 @@ $(document).ready (() => {
     let htmlBase = 'https://raw.githubusercontent.com/crobertsbmw/deckofcards/master/static/img/';
       
     
-    
     // Given the current deck, select a card.
     // The deck is an object - iterate through key value pairs to push each to a single array.
     // Randomly select a card in the array, given its length.
@@ -291,7 +290,7 @@ $(document).ready (() => {
             $(".dealerHand").append("<img id='dealerCard0' src=\"\">");
             $(".userHand").append("<img id='userCard0' src=\"\">");
         $('#dealer').removeClass('winnerBlink');
-        $('#userName').removeClass('winnerBlink');
+        $('#userName').removeClass('winnerBlink'); 
             playGame(true)});
     })
     
