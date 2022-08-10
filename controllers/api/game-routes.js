@@ -9,7 +9,10 @@ router.post('/add-cash', async (req, res) => {
         cash: newCashVal,
     });
     await player.save();
+    // console.log(player);
     res.status(200).json({newCash: newCashVal, oldCash});
+    console.log(newCashVal);
+    console.log(oldCash)
 });
 
 module.exports = router;

@@ -1,5 +1,5 @@
 
-const uuid = require("../../helpers/uuid");
+// const uuid = require("uuid");
 
 
 
@@ -12,11 +12,11 @@ const loginForm = async (event) => {
     const password = document.querySelector('#password-login').value.trim();
 
     if(username && password) {
-        const response = await fetch('/api/players/login',{
+        const response = await fetch('api/players/login',{
         method: 'POST',
         body: JSON.stringify({ username, password }),
         headers: { 'content-type': 'application/json'},
-        user_id: uuid()
+        // user_id: uuid()
         });
          
         if (response.ok) {
@@ -27,7 +27,6 @@ const loginForm = async (event) => {
     }
     };
     
-
 
     // Create Account with username and password 
     const signupForm = async (event) => {

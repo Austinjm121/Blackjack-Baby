@@ -23,9 +23,9 @@ const PORT = process.env.PORT || 3001;
 
 const sess = {
   // requests uuid from login
-  genid: function(req) {
-    return uuid(loginForm())
-  },
+  // genid: function(req) {
+  //   return uuid(loginForm())
+  // },
   secret: "The House always wins",
   cookie: {
     maxAge: 24 * 60 * 60 * 1000,
