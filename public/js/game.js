@@ -13,7 +13,6 @@ $(document).ready (() => {
         user: 0,
         dealer: 0
     }
-    let userName = 'Player';
     let htmlBase = 'https://raw.githubusercontent.com/crobertsbmw/deckofcards/master/static/img/';
       
     
@@ -98,8 +97,22 @@ $(document).ready (() => {
             method: 'POST',
             body: JSON.stringify({ cash: amount }),
             headers : {'Content-Type': 'application/json'},
-        });
-        // $('#hte-cash-thang').text(response.newCash)
+        })
+        const data = await response.json();
+        $('#playerCash').text(data.newCash);
+        getNewCash();
+    }
+       
+    const getNewCash = async () => {
+        const response = await fetch('/game', {
+            method: 'GET',
+            // body: JSON.stringify({ cash }),
+            headers : {'Content-Type': 'application/json'},
+        })
+        console.log(response);
+        if (response.ok) {
+            $('#playerCash').text()
+        }
     }
     
     // Take the user's score and the dealer's score
@@ -164,10 +177,16 @@ $(document).ready (() => {
         }
         if (winner === 'user') {
             addCashToUser(100);
+            // updateUserCashLabel(100);
         } else if (winner === 'tie') {
             addCashToUser(50);
+            // updateUserCashLabel(50);
+        } else if (winner === 'dealer') {
+            addCashToUser(-50);
+            // updateUserCashLabel(-50);
         }
-        $("#userName").html(userName+' - '+handScore(userHand));
+        
+        $("#userName").html(' - '+handScore(userHand));
     
     }
     
@@ -230,7 +249,7 @@ $(document).ready (() => {
         $("#leaderboard").show()
     
       $("#dealer").html('Dealer - '+handScore(dealerHand));
-        $(".score").html(userName + ' ' +score.user+' - '+score.dealer+' Dealer');
+        $(".score").html(' ' +score.user+' - '+score.dealer+' Dealer');
     }
     
     
@@ -290,7 +309,7 @@ $(document).ready (() => {
         $("#playAgain").hide();
         $("#leaderboard").hide();
       $("#dealer").html('Dealer');
-        $("#userName").html(userName);
+        // $("#userName").html(userName);
     
         userHand = [];
         dealerHand = [];

@@ -9,17 +9,17 @@
 		<img id="userCard0" src="">
 	</div>
 
-	<h2 id="userName" class="player">{{username}}</h2>
+	<h2 class="player">{{player.username}}<span id="userName"> </span></h2>
 
 	<div class="buttons">
 		<button id="hit"> Hit </button>
 		<button id="stand"> Stand </button>
 		<button id="playAgain">Play Again?</button>
-		<button id="leaderboard" href="/leaderboard">Leaderboard</button>
+    <button id="leaderboard">Leaderboard</button>
+
 	</div>
 
-	<div id="money">
-			<span id="cash">Cash: $<span>{{cash}}</span></span>
-			<div id="bank">Winnings: $<span></span></div>
+	<div id="money" class="player">
+			<span id="cash">Cash: $<span id="playerCash">{{player.cash}}</span></span>
 	</div>
 </div>
