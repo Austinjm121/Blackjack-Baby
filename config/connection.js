@@ -17,5 +17,5 @@ if (process.env.JAWSDB_URL) {
     }
   );
 }
-
+// Random text
 module.exports = sequelize;
