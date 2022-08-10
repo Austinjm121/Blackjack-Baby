@@ -6,7 +6,7 @@ const playerData = require('./playerData.json');
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
 
-  const players = await Player.bulkCreate(playerData, {
+  await Player.bulkCreate(playerData, {
     individualHooks: true,
     returning: true,
   });

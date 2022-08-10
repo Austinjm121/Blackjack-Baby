@@ -6,15 +6,15 @@
 
         <div class="mb-3">
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">Username Cash</li>
-            <li class="list-group-item">Username Cash</li>
-            <li class="list-group-item">Username Cash</li>
-            <li class="list-group-item">Username Cash</li>
-            <li class="list-group-item">Username Cash</li>
-            </ul>
-        <a href="/api/game" class="btn btn-primary mt-3">Play Again!</a>
-        <a href="/" class="btn btn-primary mt-3">Logout</a>
+            {{#each players as |player|}}
+            <li class="list-group-item">{{player.username}}.....${{player.cash}}</li>
+            {{/each}}
+          </ul>
+        <a href="/game" class="btn btn-primary mt-3">Play Again!</a>
+        <button id="logout" class="btn btn-primary mt-3">Logout</button>
       </div>
     </div>
   </div>
 </div>
+
+<script src='/js/logout.js'></script>

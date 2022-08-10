@@ -7,15 +7,18 @@
       <div class="userHand">
          <img id="userCard0" src="">
       </div>
-      <h2 id="userName" class="player">{{username}}</h2>
+
+      <h2 class="player">{{player.username}}<span id="userName"> </span></h2>
+
       <div class="buttons">
          <button id="hit"> Hit </button>
          <button id="stand"> Stand </button>
          <button id="playAgain">Play Again?</button>
+         <button id="leaderboard"Leaderboard</button></button>
    </section>
    <div id="balance-bet-box">
    <div class="balance-bet">
-   <div id="balance"></div>
+   <div id="balance">Balance: $<span id="playerBalance">{{player.Balance}}</span></div>
    </div>
    <div class="balance-bet">
    <div id="bet"></div>
