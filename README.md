@@ -1,20 +1,42 @@
 # Blackjack
 
-Blackjack is a classic game dating back hundreds of years, and with a lot of time, we have recreated it with multiple player support! [Play the official game here!](https://placeholder)
 
-### Screenshot 1
 
-<p align="center">
-  <img src="placeholder" alt="Blackjack Screenshot 1"/>
-</p>
+### [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-### Screenshot 2
 
-<p align="center">
-  <img src="placeholder" alt="Blackjack Screenshot 2"/>
-</p>
+Blackjack is a classic game dating back hundreds of years, and with a lot of time, we have recreated it with multiple player support! [Play the official game here!](https://blackjackbaby.herokuapp.com/)
+
+
+## Table of Contents:
+
+- [Getting Started](#getting-started)
+- [Browser Support](#browser-support)
+- [Deployment](#deployment)
+- [Built With](#built-with)
+- [Authors](#authors)
+- [Acknowledgments](#acknowledgments)
+
+### Homepage
+
+
+  <img src="./screenshots/blackjack-welcome.png" alt="welcome"/>
+
+
+### Gameplay
+
+
+  <img src="./screenshots/blackjackgameplay.png" alt="gameplay"/>
+  
+### Leaderboards
+
+
+  <img src="./screenshots/blackjackleader.png" alt="leaderboard"/>
+
 
 ## Getting Started
+
+https://github.com/Austinjm121/Blackjack-Baby.git
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
@@ -30,7 +52,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 6. Type git clone, and then paste the URL you copied in Step 3.
 
-7. git clone https://github.com/placeholder
+7. git clone https://github.com/Austinjm121/Blackjack-Baby.git
 
 8. Press Enter and a new local cloned repository will be created. 
 
@@ -40,20 +62,21 @@ These instructions will get you a copy of the project up and running on your loc
 | --- | 
 | 24+ | 
 
-## Running the tests
-
-Open `placeholder` in browser
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+In addition to being deployed on heroku for a limited time, you can locally host this application through one of your local device's PORTs!
+
+1. Run npm start in the command line/terminal. Once the server is running, 
+
+2. Navigate to localhost:{'selected PORT'} in your desired browser
 
 ## Built With
 
-* [placeholder](http://placeholder) - asdf
-* [placeholder](http://placeholder) - asdf
-* [placeholder](http://placeholder) - asdf
-* [placeholder](http://placeholder) - asdf
+* [Node](https://nodejs.org/en/) 
+* [npm-express](https://www.npmjs.com/package/express)  
+* [MySQLWorkbench](https://www.mysql.com/products/workbench/)  
+* [blackjack](https://npm.io/package/blackjack-n-deck)  
 
 ## Authors
 
@@ -67,25 +90,25 @@ Add additional notes about how to deploy this on a live system
 
 As with any game, we started with just our ideas. Our Flowcharts and initial visions are below:
 
-Whole game flow:
-<p align="center">
-  <img src="placeholder" alt="Blackjack Flow Chart"/>
-</p>
+### Multiplayer:
 
-The in-game UI:
-<p align="center">
-  <img src="placeholder" alt="Blackjack UI Sketch"/>
-</p>
+  <img src="./screenshots/wireframe-multiplayer.png" alt="Create & Join Room"/>
 
-Leaderboard UIL
-<p align="center">
-  <img src="placeholder" alt="Blackjack Leaderboard Sketch"/>
-</p>
+
+### The in-game UI:
+
+  <img src="./screenshots/wireframe-ui.png" alt="Blackjack UI Sketch"/>
+
+
+### Leaderboard UIL
+
+  <img src="./screenshots/wireframe-leader.png" alt="Blackjack Leaderboard Sketch"/>
+
 
 ## License
 
-asdf
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Acknowledgments
 
-asdf
+Codepen
