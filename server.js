@@ -51,7 +51,7 @@ app.engine("handlebars", hbs.engine);
 //set engine to handlevars. This is what our front end wil be
 app.set("view engine", "handlebars");
 //middleware
-app.use(routes);
+
 //middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -65,5 +65,5 @@ sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () =>
     console.log("Server listening on: http://localhost:" + PORT)
   );
-});
+}); 
 
