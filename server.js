@@ -52,7 +52,7 @@ app.use(session(sess))
 app.engine("handlebars", hbs.engine);
 //set engine to handlevars. This is what our front end wil be
 app.set("view engine", "handlebars");
-//middleware
+
 
 //middleware
 app.use(express.json());
