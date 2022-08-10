@@ -2,7 +2,7 @@
   {
     "username": "p1rules",
     "password": "password1",
-    "cash": 500
+    "cash": -500
   },
   {
     "username": "p2winrar",
@@ -12,27 +12,12 @@
   {
     "username": "p3epic",
     "password": "123458",
-    "cash": 100
+    "cash": -100
   },
   {
     "username": "p4rich",
     "password": "123459",
     "cash": 900
-  },
-  {
-    "username": "p5sacred",
-    "password": "password5",
-    "cash": 300
-  },
-  {
-    "username": "p6demontime",
-    "password": "password6",
-    "cash": 500
-  },
-  {
-    "username": "p7heaven",
-    "password": "password7",
-    "cash": 400
   },
   {
     

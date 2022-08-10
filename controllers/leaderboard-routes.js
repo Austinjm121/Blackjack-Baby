@@ -9,7 +9,6 @@ router.get('/', async (req, res) => {
             ],
             limit: 10,
         });
-        // res.status(200).json(playerData);
         res.render('leaderboard', {
             layout: 'start-end.handlebars',
             players: playerData.map((p) => {
