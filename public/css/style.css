@@ -63,6 +63,11 @@ header > * {
   flex: 1 1 auto;
 }
 
+header h2 {
+  text-align: center;
+  color: white;
+  align-items: center;
+}
 
 header h3 {
   text-align: right;
@@ -372,12 +377,3 @@ button:hover {
   }
 }
 
-/* cash */
-#cash, #bank {
-  color: #FFF;
-  font: 700 18px/20px Helvetica, Arial, Verdana, sans-serif;
-  margin: 12px 0;
-  position: relative;
-  text-shadow: 1px 1px #000;
-  z-index: 1;
-}

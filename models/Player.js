@@ -24,9 +24,6 @@ Player.init(
             type: DataTypes.STRING,
             allowNull: false,
             unique:true,
-            // validate:{
-            //     isUsername: true,
-            // },
         },
         cash: {
             type: DataTypes.INTEGER,

@@ -23,9 +23,9 @@ const PORT = process.env.PORT || 3001;
 
 const sess = {
   // requests uuid from login
-  genid: function(req) {
-    return uuid(loginForm())
-  },
+  // genid: function(req) {
+  //   return uuid(loginForm())
+  // },
   secret: "The House always wins",
   cookie: {
     maxAge: 24 * 60 * 60 * 1000,
@@ -41,8 +41,6 @@ const sess = {
   }),
 
 };
-
-
 
 // session connection
 app.use(session(sess))
@@ -67,5 +65,5 @@ sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () =>
     console.log("Server listening on: http://localhost:" + PORT)
   );
-});
+}); 
 
